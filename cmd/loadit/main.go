@@ -30,7 +30,7 @@ var (
 	flagPromBinding       = flag.String("prom", ":8080", "binding for prometheus server")
 	flagUser              = flag.String("user", agent.DefaultUser, "user to authenticate with server")
 	flagPassword          = flag.String("password", agent.DefaultPassword, "password to authenticate with server")
-	flagBaseHostName      = flag.String("base-hostname", "test-host", "base hostname to prepend with count number.")
+	flagBaseEntityName    = flag.String("base-entity-name", "test-host", "base entity name to prepend with count number.")
 )
 
 func main() {
@@ -50,7 +50,7 @@ func main() {
 
 	start := time.Now()
 	for i := 0; i < *flagCount; i++ {
-		name := fmt.Sprintf("%s-%d", *flagBaseHostName, i+1)
+		name := fmt.Sprintf("%s-%d", *flagBaseEntityName, i+1)
 
 		cfg := agent.NewConfig()
 		cfg.API.Host = agent.DefaultAPIHost

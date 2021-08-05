@@ -32,25 +32,25 @@ var (
 	flagUser              = flag.String("user", LookupEnvOrString("LOADIT_USER", agent.DefaultUser), "user to authenticate with server")
 	flagPassword          = flag.String("password", LookupEnvOrString("LOADIT_PASSWORD", agent.DefaultPassword), "password to authenticate with server")
 	flagBaseEntityName    = flag.String("base-entity-name", LookupEnvOrString("LOADIT_ENTITY_NAME", "test-host"), "base entity name to prepend with count number.")
-  flagEntityOffset      = flag.Int("entity-offset", LookupEnvOrInt("LOADIT_ENTITY_OFFSET", 0), "password to authenticate with server")
+	flagEntityOffset      = flag.Int("entity-offset", LookupEnvOrInt("LOADIT_ENTITY_OFFSET", 0), "password to authenticate with server")
 )
 
 func LookupEnvOrString(key string, defaultVal string) string {
-       if val, ok := os.LookupEnv(key); ok {
-               return val
-       }
-       return defaultVal
+	if val, ok := os.LookupEnv(key); ok {
+		return val
+	}
+	return defaultVal
 }
 
 func LookupEnvOrInt(key string, defaultVal int) int {
-       if val, ok := os.LookupEnv(key); ok {
-               v, err := strconv.Atoi(val)
-               if err != nil {
-                       log.Fatalf("LookupEnvOrInt[%s]: %v", key, err)
-               }
-               return v
-       }
-       return defaultVal
+	if val, ok := os.LookupEnv(key); ok {
+		v, err := strconv.Atoi(val)
+		if err != nil {
+			log.Fatalf("LookupEnvOrInt[%s]: %v", key, err)
+		}
+		return v
+	}
+	return defaultVal
 }
 
 func main() {
